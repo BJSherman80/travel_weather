@@ -223,6 +223,8 @@
         "lines": [
           1,
           1,
+          1,
+          null,
           null
         ]
       },
@@ -231,8 +233,91 @@
           1,
           null
         ]
+      },
+      "/Users/brettsherman/turing/mod_3/projects/travel_weather/app/serializers/forecast_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/brettsherman/turing/mod_3/projects/travel_weather/app/facades/forecast_facade.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/brettsherman/turing/mod_3/projects/travel_weather/app/services/geo_service.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/brettsherman/turing/mod_3/projects/travel_weather/app/services/forecast_service.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/brettsherman/turing/mod_3/projects/travel_weather/app/poros/current_weather.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1610822080
+    "timestamp": 1610833243
   }
 }
