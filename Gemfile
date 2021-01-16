@@ -21,13 +21,9 @@ gem 'puma', '~> 4.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'coffee-rails', '~> 4.2'
 gem 'faraday'
 gem 'fast_jsonapi'
 gem 'figaro'
-gem 'jbuilder', '~> 2.5'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
