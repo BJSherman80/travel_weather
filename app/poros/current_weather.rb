@@ -19,7 +19,7 @@ class CurrentWeather
     @humidity = (data[:humidity])
     @uvi = (data[:uvi])
     @visibility = (data[:visibility])
-    @conditions =(data[weather][0][:description]
-    @icon =  (data[:weather][0][:icon])
+    @conditions = (data[:weather][0][:description])
+    @icon = (data[:weather][0][:icon])
   end
 end
