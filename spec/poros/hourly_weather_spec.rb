@@ -22,9 +22,23 @@ describe HourlyWeather do
   end
 
   it '.cardinal_direction' do
-    expect(@data[:wind_deg]).to eq(173)
     weather = HourlyWeather.new(@data)
-    expect(weather.wind_direction).to eq('S')
-    # expect(cardinal_direction(173)).to eq('S')
+    expect(weather.cardinal_direction(11)).to eq('N')
+    expect(weather.cardinal_direction(33)).to eq('NNE')
+    expect(weather.cardinal_direction(56)).to eq('NE')
+    expect(weather.cardinal_direction(78)).to eq('ENE')
+    expect(weather.cardinal_direction(101)).to eq('E')
+    expect(weather.cardinal_direction(123)).to eq('ESE')
+    expect(weather.cardinal_direction(146)).to eq('SE')
+    expect(weather.cardinal_direction(168)).to eq('SSE')
+    expect(weather.cardinal_direction(191)).to eq('S')
+    expect(weather.cardinal_direction(213)).to eq('SSW')
+    expect(weather.cardinal_direction(236)).to eq('SW')
+    expect(weather.cardinal_direction(258)).to eq('WSW')
+    expect(weather.cardinal_direction(281)).to eq('W')
+    expect(weather.cardinal_direction(303)).to eq('WNW')
+    expect(weather.cardinal_direction(326)).to eq('NW')
+    expect(weather.cardinal_direction(348)).to eq('NNW')
+    expect(weather.cardinal_direction(nil)).to eq('No Wind')
   end
 end
