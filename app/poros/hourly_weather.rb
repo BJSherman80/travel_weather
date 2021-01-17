@@ -7,7 +7,7 @@ class HourlyWeather
               :icon
 
   def initialize(data)
-    @date = Time.at(data[:dt])
+    @time = Time.at(data[:dt])
     @temperature = (data[:temp])
     @wind_speed = (data[:wind_speed])
     @wind_direction = data[:wind_direction]
