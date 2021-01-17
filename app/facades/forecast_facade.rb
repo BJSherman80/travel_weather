@@ -5,6 +5,7 @@ class ForecastFacade
     current_weather = CurrentWeather.new(forecast_data[:current])
     daily_weather = daily(limit_daily_5(forecast_data))
     hourly_weather = hourly(limit_hourly_8(forecast_data))
+    Forecast.new(current_weather, daily_weather, hourly_weather)
   end
 
   def self.limit_daily_5(_data)
