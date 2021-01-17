@@ -26,20 +26,17 @@ describe 'Forcast api' do
     expect(weather['data']['attributes']['current_weather']).to have_key('feels_like')
     expect(weather['data']['attributes']['current_weather']['feels_like']).to be_a Float
     expect(weather['data']['attributes']['current_weather']).to have_key('humidity')
-    expect(weather['data']['attributes']['current_weather']['humidity']).to be_a Integer
+    expect(weather['data']['attributes']['current_weather']['humidity']).to be_a(Integer).or be_a(Float)
     expect(weather['data']['attributes']['current_weather']).to have_key('uvi')
-    expect(weather['data']['attributes']['current_weather']['uvi']).to be_a Integer
-    expect(weather['data']['attributes']['current_weather']).to have_key('uvi')
-    expect(weather['data']['attributes']['current_weather']['uvi']).to be_a Integer
+    expect(weather['data']['attributes']['current_weather']['uvi']).to be_a(Integer).or be_a(Float)
     expect(weather['data']['attributes']['current_weather']).to have_key('visibility')
-    expect(weather['data']['attributes']['current_weather']['visibility']).to be_a Integer
+    expect(weather['data']['attributes']['current_weather']['visibility']).to be_a(Integer).or be_a(Float)
     expect(weather['data']['attributes']['current_weather']).to have_key('conditions')
     expect(weather['data']['attributes']['current_weather']['conditions']).to be_a String
     expect(weather['data']['attributes']['current_weather']).to have_key('icon')
     expect(weather['data']['attributes']['current_weather']['icon']).to be_a String
     expect(weather['data']['attributes']).to have_key('daily_weather')
     expect(weather['data']['attributes']['daily_weather']).to be_a Array
-    expect((weather['data']['attributes']['daily_weather']).length).to eq(5)
     expect(weather['data']['attributes']['daily_weather'][0]).to have_key('date')
     expect(weather['data']['attributes']['daily_weather'][0]['date']).to be_a String
     expect(weather['data']['attributes']['daily_weather'][0]).to have_key('sunset')
@@ -56,7 +53,6 @@ describe 'Forcast api' do
     expect(weather['data']['attributes']['daily_weather'][0]['icon']).to be_a String
     expect(weather['data']['attributes']).to have_key('hourly_weather')
     expect(weather['data']['attributes']['hourly_weather']).to be_a Array
-    expect((weather['data']['attributes']['hourly_weather']).length).to eq(8)
     expect(weather['data']['attributes']['hourly_weather'][0]).to have_key('time')
     expect(weather['data']['attributes']['hourly_weather'][0]['time']).to be_a String
     expect(weather['data']['attributes']['hourly_weather'][0]).to have_key('temperature')
@@ -64,10 +60,24 @@ describe 'Forcast api' do
     expect(weather['data']['attributes']['hourly_weather'][0]).to have_key('wind_speed')
     expect(weather['data']['attributes']['hourly_weather'][0]['wind_speed']).to be_a Float
     expect(weather['data']['attributes']['hourly_weather'][0]).to have_key('wind_direction')
-    # expect(weather['data']['attributes']['hourly_weather'][0]['wind_direction']).to be_a String
+    expect(weather['data']['attributes']['hourly_weather'][0]['wind_direction']).to be_a String
     expect(weather['data']['attributes']['hourly_weather'][0]).to have_key('conditions')
     expect(weather['data']['attributes']['hourly_weather'][0]['conditions']).to be_a String
     expect(weather['data']['attributes']['hourly_weather'][0]).to have_key('icon')
     expect(weather['data']['attributes']['hourly_weather'][0]['icon']).to be_a String
   end
+
+  it 'can gets 5 day daily forcast and 8 hour hourly forecast' do
+    get '/api/v1/forecast?location=denver,co'
+    expect(response).to be_successful
+
+    weather = JSON.parse(response.body)
+    expect((weather['data']['attributes']['hourly_weather']).length).to eq(8)
+    expect((weather['data']['attributes']['daily_weather']).length).to eq(5)
+  end
+
+  # it 'can get cardinal direction from a numeric value' do
+  #   wind_number = 327
+  #   expect(cardinal_direction(wind_number)).to eq('NNW')
+  # end
 end
