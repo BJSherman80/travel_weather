@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Forcast api' do
-  it 'can get json through open weather api' do
+  it 'can get json from a request' do
     get '/api/v1/forecast?location=denver,co'
     expect(response).to be_successful
 
