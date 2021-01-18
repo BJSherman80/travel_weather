@@ -66,7 +66,6 @@ describe 'Geo Service' do
     expect(hour[:wind_speed]).to be_a(Integer).or be_a(Float)
     expect(hour).to have_key(:wind_deg)
     expect(hour[:wind_deg]).to be_a(Integer).or be_a(Float)
-    expect(hour).to have_key(:visibility)
     expect(hour).to have_key(:weather)
     expect(hour[:weather]).to be_a(Array)
     expect(hour[:weather][0]).to have_key(:description)
