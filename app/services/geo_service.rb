@@ -1,7 +1,13 @@
 class GeoService
   def self.fetch_lat_long(location)
     conn = Faraday.new('https://www.mapquestapi.com')
-    response = conn.get("/geocoding/v1/address?key=#{ENV['GEO_KEY']}&inFormat=kvp&outFormat=json&location=#{location}&thumbMaps=false")
+    response = conn.get('/geocoding/v1/address') do |f|
+      f.params['key'] = ENV['GEO_KEY']
+      f.params['inFormat'] = 'kvp'
+      f.params['outFormat'] = 'json'
+      f.params['location'] = location
+      f.params['thumbMaps'] = 'false'
+    end
     json = JSON.parse(response.body, symbolize_names: true)
     lat_long_parsed(json)
   end
