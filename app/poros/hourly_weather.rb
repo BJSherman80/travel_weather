@@ -17,7 +17,7 @@ class HourlyWeather
 
   def cardinal_direction(num)
     if num.nil?
-      num = 'No Wind'
+      'No Wind'
     else
       val = ((num / 22.5) + 0.5).to_i
       arr = %w[N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW]
