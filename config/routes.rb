@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       namespace :forecast do
         get '/', to: 'search#show'
       end
+      namespace :backgrounds do
+        get '/', to: 'search#show'
+      end
     end
   end
 end
