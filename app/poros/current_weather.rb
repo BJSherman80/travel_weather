@@ -21,6 +21,5 @@ class CurrentWeather
     @visibility = (data[:visibility])
     @conditions = (data[:weather][0][:description])
     @icon = (data[:weather][0][:icon])
-    binding.pry
   end
 end
