@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'Geo Service' do
-  # .to be_a(Integer).or be_a(Float)
   it 'can get weather data from lat_long input' do
     lat_long = [39.738453, -104.984853]
     forecast_data = ForecastService.fetch_weather(lat_long)

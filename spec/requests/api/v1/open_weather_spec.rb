@@ -75,9 +75,4 @@ describe 'Forcast api' do
     expect((weather['data']['attributes']['hourly_weather']).length).to eq(8)
     expect((weather['data']['attributes']['daily_weather']).length).to eq(5)
   end
-
-  # it 'can get cardinal direction from a numeric value' do
-  #   wind_number = 327
-  #   expect(cardinal_direction(wind_number)).to eq('NNW')
-  # end
 end
