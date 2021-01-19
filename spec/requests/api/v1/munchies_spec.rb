@@ -6,5 +6,6 @@ describe 'Munchies api' do
     expect(response).to be_successful
 
     data = JSON.parse(response.body)
+    binding.pry
   end
 end
