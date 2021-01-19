@@ -51,16 +51,30 @@ describe 'User' do
     expect(response_body[:errors]).to eq("Password can't be blank")
   end
 
-  it 'can get a 409 error with not matching passwords message' do
+  it 'can get a 400 error with not matching passwords message' do
     user_params = { email: 'user@google.com', password: 'password', password_confirmation: 'wrong_password' }
     headers = { 'CONTENT_TYPE' => 'application/json' }
     post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
     expect(response).not_to be_successful
-    expect(response.status).to eq(409)
+    expect(response.status).to eq(400)
     response_body = JSON.parse(response.body, symbolize_names: true)
     expect(response_body).to be_a Hash
     expect(response_body).to have_key(:errors)
     expect(response_body[:errors]).to be_a String
-    expect(response_body[:errors]).to eq('The password confirmation does not match.')
+    expect(response_body[:errors]).to eq("Password confirmation doesn't match Password")
+  end
+
+  it 'can get a 400 error with email already exists' do
+    User.create!(email: 'user@google.com', password: 'password', password_confirmation: 'password')
+    user_params = { email: 'user@google.com', password: 'password', password_confirmation: 'password' }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+    expect(response).not_to be_successful
+    expect(response.status).to eq(400)
+    response_body = JSON.parse(response.body, symbolize_names: true)
+    expect(response_body).to be_a Hash
+    expect(response_body).to have_key(:errors)
+    expect(response_body[:errors]).to be_a String
+    expect(response_body[:errors]).to eq('Email has already been taken')
   end
 end
