@@ -12,6 +12,16 @@ class GeoService
     lat_long_parsed(json)
   end
 
+  def self.fetch_travel_data(location, destination)
+    conn = Faraday.new('https://www.mapquestapi.com')
+    response = conn.get('/directions/v2/route') do |f|
+      f.params['key'] = ENV['GEO_KEY']
+      f.params['from'] = location
+      f.params['to'] = destination
+    end
+    json = JSON.parse(response.body, symbolize_names: true)
+  end
+
   def self.lat_long_parsed(json)
     [(json[:results][0][:locations][0][:latLng][:lat]).to_f, (json[:results][0][:locations][0][:latLng][:lng]).to_f]
   end

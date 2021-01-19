@@ -1,13 +1,8 @@
 class MunchiesFacade
-  def self.fetch_data(location, _destination, food)
+  def self.fetch_data(location, destination, food)
     resturant_data = YelpService.fetch_resturants(food, location)
     resturant = Resturant.new(resturant_data)
-    binding.pry
-  end
-
-  def self.create_resturant(data)
-    data.map do |resturant|
-      Resturant.new(resturant)
-    end
+    travel_data = GeoService.fetch_travel_data(location, destination)
+    destination = Destination.new(travel_data)
   end
 end
