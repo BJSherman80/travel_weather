@@ -48,6 +48,19 @@ describe 'User' do
     expect(response_body).to be_a Hash
     expect(response_body).to have_key(:errors)
     expect(response_body[:errors]).to be_a String
-    expect(response_body[:errors]).to eq("Password can't be blank and Password can't be blank")
+    expect(response_body[:errors]).to eq("Password can't be blank")
+  end
+
+  it 'can get a 409 error with not matching passwords message' do
+    user_params = { email: 'user@google.com', password: 'password', password_confirmation: 'wrong_password' }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+    expect(response).not_to be_successful
+    expect(response.status).to eq(409)
+    response_body = JSON.parse(response.body, symbolize_names: true)
+    expect(response_body).to be_a Hash
+    expect(response_body).to have_key(:errors)
+    expect(response_body[:errors]).to be_a String
+    expect(response_body[:errors]).to eq('The password confirmation does not match.')
   end
 end
