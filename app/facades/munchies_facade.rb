@@ -6,7 +6,7 @@ class MunchiesFacade
     destination = Destination.new(travel_data)
     lat_long = GeoService.fetch_lat_long(destination)
     forecast_data = ForecastService.fetch_weather(lat_long)
-    current_weather = DestinationWeather.new(forecast_data[:current])
-    Munchie.new(destination, resturant, current_weather)
+    destination_weather = DestinationWeather.new(forecast_data[:current])
+    Munchie.new(destination, resturant, destination_weather)
   end
 end
