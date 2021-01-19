@@ -14,7 +14,7 @@ describe DailyWeather do
     expect(weather).to be_a(DailyWeather)
     expect(weather.date).to eq('2021-01-17 12:00:00 -0700')
     expect(weather.sunrise).to eq('2021-01-17 07:18:07 -0700')
-    expect(weather.sunset).to eq('2021-01-17 07:18:07 -0700')
+    expect(weather.sunset).to eq('2021-01-18 00:01:48.000000000 +0000')
     expect(weather.max_temp).to eq(90.00)
     expect(weather.min_temp).to eq(60.5)
     expect(weather.conditions).to eq('windy')
