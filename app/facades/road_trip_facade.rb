@@ -3,7 +3,7 @@ class RoadTripFacade
     travel_data = GeoService.fetch_travel_data(location, destination)
     lat_long = GeoService.fetch_lat_long(destination)
     forecast_data = ForecastService.fetch_weather(lat_long)[:hourly]
-    travel_seconds = travel_seconds(travel_data)
+    travel_seconds = travel_seconds(travel_data) # seconds to add to time.now
     arrival_forecast = find_weather(travel_seconds, forecast_data)
     travel_time = confirm_time(travel_data) # hours mins
     RoadTrip.new(location, destination, travel_time, arrival_forecast)
@@ -11,7 +11,6 @@ class RoadTripFacade
 
   def self.find_weather(travel_seconds, forecast_data)
     arrival_time = travel_seconds[0] + DateTime.now.to_i
-    # forecast_data.where(dt: arrival_time)
     weather = forecast_data.find { |forecast| forecast[:dt] >= arrival_time }
     ArrivalWeather.new(weather)
   end
