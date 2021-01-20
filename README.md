@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Ruby-2.5.3-orange) ![](https://travis-ci.com/Relocate08/yelp-microservice.svg?branch=main)
+![](https://img.shields.io/badge/Ruby-2.5.3-orange) 
 
 # Travel Weather App
 
