@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Forcast api' do
+describe 'Forcast request' do
   it 'can get correct json from a request' do
     get '/api/v1/forecast?location=denver,co'
     expect(response).to be_successful

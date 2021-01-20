@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       # end
       post '/users', to: 'users#create'
       post '/sessions', to: 'sessions#create'
+      post '/roadtrip', to: 'road_trip#create'
       namespace :forecast do
         get '/', to: 'search#show'
       end
