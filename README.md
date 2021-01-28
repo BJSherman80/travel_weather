@@ -116,7 +116,16 @@ Accept: application/json
 ```
 ## Response 
 ```
-=> {:data=>{:id=>"50", :type=>"users", :attributes=>{:email=>"user@google.com", :api_key=>"L8LTSbEGPaxt6jyvWmpQafin"}}}
+{
+    "data": {
+        "id": "3",
+        "type": "users",
+        "attributes": {
+            "email": "sample@example.com",
+            "api_key": "GfX6aZwBQowNnQkosocfKwsV"
+        }
+    }
+}
 
 ```
 
@@ -133,7 +142,16 @@ Accept: application/json
 ```
 ## Response 
 ```
-{:data=>{:id=>"54", :type=>"users", :attributes=>{:email=>"bjsherman80@gmail.com", :api_key=>"A2tKUDmrbtTJczCRzuy7e56q"}}}
+{
+    "data": {
+        "id": "3",
+        "type": "users",
+        "attributes": {
+            "email": "sample@example.com",
+            "api_key": "GfX6aZwBQowNnQkosocfKwsV"
+        }
+    }
+}
 ```
 ### Roadtrip Request
 ```
