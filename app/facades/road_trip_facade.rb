@@ -25,7 +25,7 @@ class RoadTripFacade
 
   def self.travel_seconds(data)
     if !data[:route][:legs].nil?
-      (data[:route][:legs][0][:time])
+      (data[:route][:legs][0][:time]) # check this
     else
       0
     end
